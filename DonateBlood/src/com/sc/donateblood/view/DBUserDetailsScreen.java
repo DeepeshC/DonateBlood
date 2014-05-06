@@ -88,8 +88,10 @@ public class DBUserDetailsScreen extends RoboFragmentActivity {
 		nameView.setText(dbUserDetails.name);
 		phoneView.setText(dbUserDetails.contactNumber);
 		sexView.setText("Male");
-		userImage.setImageBitmap(DBUtilities
-				.getBitmapFromParse(dbUserDetails.userImage));
+		if (null != dbUserDetails.userImage) {
+			userImage.setImageBitmap(DBUtilities
+					.getBitmapFromParse(dbUserDetails.userImage));
+		}
 
 	}
 
@@ -100,13 +102,13 @@ public class DBUserDetailsScreen extends RoboFragmentActivity {
 		callButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				eMail();
+				makeCalltoNumber();
 			}
 		});
 		emailBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				makeCalltoNumber();
+				eMail();
 			}
 		});
 	}

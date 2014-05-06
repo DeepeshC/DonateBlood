@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import android.text.TextUtils;
+
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -52,17 +54,24 @@ public class DBParserAsync extends Observable {
 				userDetails.name = (String) parseObject.get("Name");
 				String lat = (String) parseObject.get("Latitude");
 				String lon = (String) parseObject.get("Longitude");
-				userDetails.latitude = Double.parseDouble(lat);
-				userDetails.longitude = Double.parseDouble(lon);
+				if (!TextUtils.isEmpty(lon) && !TextUtils.isEmpty(lat)) {
+					userDetails.latitude = Double.parseDouble(lat);
+					userDetails.longitude = Double.parseDouble(lon);
+					String distance = DBUtilities.getDistance(latitude,
+							longitude, userDetails.latitude,
+							userDetails.longitude);
+					userDetails.distance = distance;
+				} else {
+					userDetails.distance = "0";
+				}
 				userDetails.emailId = (String) parseObject.get("emailId");
 				userDetails.contactNumber = (String) parseObject.get("Contact");
 				userDetails.location = (String) parseObject.get("Location");
-				String distance = DBUtilities.getDistance(latitude, longitude,
-						userDetails.latitude, userDetails.longitude);
-				userDetails.distance = distance;
-				byte[] fileByte = null;
-				fileByte = file.getData();
-				userDetails.userImage = fileByte;
+				if (null != file) {
+					byte[] fileByte = null;
+					fileByte = file.getData();
+					userDetails.userImage = fileByte;
+				}
 				dbUserDetails.add(userDetails);
 			} catch (ParseException e) {
 				e.printStackTrace();
