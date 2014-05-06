@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple click event</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<style>
+html,body,#map-canvas {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+</style>
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+	var map;
+	var latitude = GoogleMapview.getLatitude();
+	var longitude = GoogleMapview.getLongitude();
+	var shortName = GoogleMapview.getShortName();
+	var myLatlng = new google.maps.LatLng(latitude, longitude);
+	function initialize() {
+		var mapOptions = {
+			scaleControl : true,
+			zoom : 15,
+			center : new google.maps.LatLng(latitude, longitude)
+		};
+		map = new google.maps.Map(document.getElementById('map-canvas'),
+				mapOptions);
+
+		var marker = new google.maps.Marker({
+			position : myLatlng,
+			map : map,
+			title : shortName
+		});
+		var infowindow = new google.maps.InfoWindow({
+			content : shortName
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.open(map, marker);
+		});
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+<body>
+	<div id="map-canvas"></div>
+</body>
+</html>
+

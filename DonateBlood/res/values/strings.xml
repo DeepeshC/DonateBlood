@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DonateBlood</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="no_network">Internet connection appears to be offline. Please verify your connection.</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="required_fields_header">Required Fields</string>
+    <string name="required_fields_message">Please double check the form for any fields you left blank.</string>
+
+    <!-- Home Screen -->
+    <string name="home_register">New User?</string>
+    <string name="home_search_bg">Search Blood Groups</string>
+
+    <!-- Search Screen -->
+    <string name="search_search">Search</string>
+    <string name="search_distance_text">Distance from you</string>
+
+    <!-- User Details Screen -->
+    <string name="user_details_call">Call</string>
+    <string name="user_details_email">Email</string>
+    <string name="user_details_title">Details</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Registration</string>
+    <string name="register_text">Register?</string>
+    <string name="donation_quts">The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one—or even you.</string>
+
+</resources>
